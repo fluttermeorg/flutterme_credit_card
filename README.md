@@ -59,7 +59,6 @@ The credit card widget have support for majority of the credit cards available w
 |10   |Union Pay        |`true`   |
 |11   |Visa             |`true`   |
 
-#### Features
 ## Features
  - #### High UI Customization
 	 - **Card Mask Format (MaskFormat):** This allow you to choose how your card number is been masked for privacy reasons from list of options which are:
