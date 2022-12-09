@@ -55,54 +55,60 @@ The credit card package have support for majority of the credit cards available 
 |11   |Visa             |`true`   |
 
 ## Features
- - #### UI Customization
-	- ##### Background Color (backgroundColor):
-		To set the background color of the card. This can not be a gradient. To set a gradient background color use the `backgroundGradient`. *backgroundColor* and *backgroundGradient* can't be set at same time.
-	- ##### Background Gradient Color (backgroundGradient):
-		This is to set a background gradient color for the card. *backgroundColor* and *backgroundGradient* can't be set at same time.
-	- ##### Background Image(backgroundImage):
-		This is to set a background image for the card. When set, *backgroundColor* and *backgroundGradient* have no effects.
- 	- ##### Border Radius (borderRadius):
-		Adjustment of card border radius.
-	- ##### Border Shadow (borderShadow):
-		Allows the controls of card elevation and shadow directions.
-	- ##### Card Title (title):
-		To display the card title.
-	- ##### Card Title Style (titleStyle):
-		To style the card title text.
-	- ##### Card Number (number):
-		To display the card number.
-	- ##### Card Number Style (numberStyle):
-		To style the card number text.
-	- ##### Card Valid Thru (validThru):
-		To display the card valid thru date.
-	- ##### Card Valid Thru (validThruStyle):
-		To style the card valid thru date.
-	- ##### Card CVV (cvv):
-		To display the card cvv.
-	- ##### Card CVV Style (cvvStyle):
-		To style the card cvv text.
-	- ##### Card Holder (holder):
-		To display the card Holder.
-	- ##### Card HolderStyle (holderStyle):
-		To style the card holder name.
-		 
-	<br/>
-		 
- - #### Validation Customization
-	- ##### Card Number Mask (CardNumberMask): 
-		This allow you to choose how your card number is been masked for privacy reasons from list of options which are:
-		-  **`full`** - This display non of the characters of your card number. E.g `**** **** **** ****`
-		- **`first4Last4`** - This display only the first 4 and last 4 characters of your card number. E.g `1234 **** **** 5678`
-		- **`first6last2`** - This display only the first 6 and last 2 characters of your card number. E.g `1234 56** **** **76`
-		- **`first2last6`** - This display only the first 2 and last 6 characters of your card number. E.g `12** **** **68 9876`
-		- **`none`** - This display all the characters of your card number. E.g `1234 5678 9876 5633`
-	- ##### CVV Mask (CVVMask):
-		This allow you to choose how your card number is been masked for privacy reasons from list of options which are:
-		-  **`full`** - This display non of the characters of your card CVV. E.g `***`
-		- **`none`** - This display all the characters of your card number. E.g `123`
-				 
-	<br/>
+<details>
+  <summary>
+    <h4>UI Customization</h4>
+  </summary>
+  
+  - ##### Background Color (backgroundColor):
+    To set the background color of the card. This can not be a gradient. To set a gradient background color use the `backgroundGradient`. *backgroundColor* and *backgroundGradient* can't be set at same time.
+  - ##### Background Gradient Color (backgroundGradient):
+    This is to set a background gradient color for the card. *backgroundColor* and *backgroundGradient* can't be set at same time.
+  - ##### Background Image(backgroundImage):
+	This is to set a background image for the card. When set, *backgroundColor* and *backgroundGradient* have no effects.
+  - ##### Border Radius (borderRadius):
+	Adjustment of card border radius.
+  - ##### Border Shadow (borderShadow):
+	Allows the controls of card elevation and shadow directions.
+  - ##### Card Title (title):
+	To display the card title.
+  - ##### Card Title Style (titleStyle):
+	To style the card title text.
+  - ##### Card Number (number):
+	To display the card number.
+  - ##### Card Number Style (numberStyle):
+	To style the card number text.
+  - ##### Card Valid Thru (validThru):
+	To display the card valid thru date.
+  - ##### Card Valid Thru (validThruStyle):
+	To style the card valid thru date.
+  - ##### Card CVV (cvv):
+	To display the card cvv.
+  - ##### Card CVV Style (cvvStyle):
+	To style the card cvv text.
+  - ##### Card Holder (holder):
+	To display the card Holder.
+  - ##### Card HolderStyle (holderStyle):
+	To style the card holder name.
+</details>
+
+<details>
+  <summary>
+    <h4>Validation Customization</h4>
+  </summary>
+
+  - ##### Card Number Mask (CardNumberMask): 
+    This allow you to choose how your card number is been masked for privacy reasons from list of options which are:
+    -  **`full`** - This display non of the characters of your card number. E.g `**** **** **** ****`
+    - **`first4Last4`** - This display only the first 4 and last 4 characters of your card number. E.g `1234 **** **** 5678`
+    - **`first6last2`** - This display only the first 6 and last 2 characters of your card number. E.g `1234 56** **** **76`
+    - **`first2last6`** - This display only the first 2 and last 6 characters of your card number. E.g `12** **** **68 9876`
+    - **`none`** - This display all the characters of your card number. E.g `1234 5678 9876 5633`
+  - ##### CVV Mask (CVVMask):
+    This allow you to choose how your card number is been masked for privacy reasons from list of options which are:
+    -  **`full`** - This display non of the characters of your card CVV. E.g `***`
+    - **`none`** - This display all the characters of your card number. E.g `123`
+</details>
 		 
 ## Values & Types
 
