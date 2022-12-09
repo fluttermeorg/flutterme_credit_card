@@ -36,7 +36,7 @@ const like = 'sample';
 
 This is a credit card customizable widget and validation package by Flutterme.
 
-The credit card package have support for majority of the credit cards available with automatic detection and validations. These detection and validations can be disable in cases where no needed. Below are they list of supported cards validations. To know what type a value accept, check [Values & Types](#values-&-types)
+The credit card package have support for majority of the credit cards available with automatic detection and validations. These detection and validations can be disable in cases where no needed. Below are they list of supported cards validations. To know what type a value accept, check [Values & Types](#values--types)
 
 > **Note:** Supported cards are updated and will be more in the future updates.
 
