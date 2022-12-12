@@ -1,3 +1,3 @@
 library credit_card_flutterme;
 
-export "src/app.dart";
+export 'src/card/card.dart';
