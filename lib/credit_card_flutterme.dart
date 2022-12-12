@@ -1,3 +1,3 @@
 library credit_card_flutterme;
 
-export 'src/card/card.dart';
+export 'package:credit_card_flutterme/src/credit_cardfm/credit_cardfm.dart';
