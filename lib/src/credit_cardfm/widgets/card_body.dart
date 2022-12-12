@@ -146,29 +146,29 @@ class _CardBodyState extends State<CardBody> {
   String cardTypeIcon(CardType type) {
     switch (type) {
       case CardType.amex:
-        return "images/amex.png";
+        return "images/cards/amex.png";
       case CardType.chip:
-        return "images/chip.png";
+        return "images/cards/chip.png";
       case CardType.diners:
-        return "images/diners.png";
+        return "images/cards/diners.png";
       case CardType.discover:
-        return "images/discover.png";
+        return "images/cards/discover.png";
       case CardType.elo:
-        return "images/elo.png";
+        return "images/cards/elo.png";
       case CardType.hipercard:
-        return "images/hipercard.png";
+        return "images/cards/hipercard.png";
       case CardType.jcb:
-        return "images/jcb.png";
+        return "images/cards/jcb.png";
       case CardType.maestro:
-        return "images/maestro.png";
+        return "images/cards/maestro.png";
       case CardType.mastercard:
-        return "images/mastercard.png";
+        return "images/cards/mastercard.png";
       case CardType.mir:
-        return "images/mir.png";
+        return "images/cards/mir.png";
       case CardType.unionpay:
-        return "images/unionpay.png";
+        return "images/cards/unionpay.png";
       case CardType.visa:
-        return "images/visa.png";
+        return "images/cards/visa.png";
     }
   }
 }
