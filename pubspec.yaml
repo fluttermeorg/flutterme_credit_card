@@ -18,4 +18,5 @@ dev_dependencies:
 
 flutter:
   assets:
-    - images/
+    - images/large/ # card company logo for large and extra large screens
+    - images/regular/ # card company logo for small and medium screens

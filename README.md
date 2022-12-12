@@ -53,6 +53,7 @@ The credit card package have support for majority of the credit cards available 
 |9    |Mir              |`true`   |
 |10   |Union Pay        |`true`   |
 |11   |Visa             |`true`   |
+|11   |Verve            |`false`  |
 
 ## Features
 <details>
