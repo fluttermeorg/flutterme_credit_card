@@ -2,36 +2,36 @@ import 'package:credit_card_flutterme/credit_card_flutterme.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatefulWidget {
+  /// #### Card Body
+  /// This contain all the data within the card. Such data include
+  /// - Title
+  /// - Title Style
+  /// - Number
+  /// - Number Style
+  /// - Valid Thur
+  /// - Valid Thur Style
+  /// - CVV
+  /// - CVV Style
+  /// - Holder
+  /// - Holder Style
+  /// - Card Type
+  /// 
+  /// <div align="center">
+  /// <img src="https://raw.githubusercontent.com/ibukunoluwanap/credit_card_flutterme/main/images/docs/card.png" width="50%">
+  /// </div>
   const CardBody({
     super.key,
-    this.title = "Flutterme Card",
-    this.titleStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    ),
-    this.number = "0000 0000 0000 0000",
-    this.numberStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
-    ),
-    this.validThur = "00/00",
-    this.validThurStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 14,
-    ),
-    this.cvv = "000",
-    this.cvvStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 14,
-    ),
-    this.holder = "John Doe",
-    this.holderStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 20,
-    ),
-    this.cardType = CardType.chip,
+    required this.title,
+    required this.titleStyle,
+    required this.number,
+    required this.numberStyle,
+    required this.validThur,
+    required this.validThurStyle,
+    required this.cvv,
+    required this.cvvStyle,
+    required this.holder,
+    required this.holderStyle,
+    required this.cardType,
   });
   final String title;
   final TextStyle titleStyle;

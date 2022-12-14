@@ -13,6 +13,7 @@ class CreditCardFM extends StatefulWidget {
   /// </div>
   const CreditCardFM({
     super.key,
+    // card decoration
     this.width = 430,
     this.height = 230,
     this.padding = const EdgeInsets.all(10),
@@ -23,6 +24,35 @@ class CreditCardFM extends StatefulWidget {
     this.borderRadius = const BorderRadius.all(Radius.circular(15)),
     this.boxShadow,
     this.gradient,
+    // card body contain
+    this.title = "Flutterme Card",
+    this.titleStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
+    this.number = "**** **** **** ****",
+    this.numberStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+    ),
+    this.validThur = "**/**",
+    this.validThurStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+    ),
+    this.cvv = "***",
+    this.cvvStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+    ),
+    this.holder = "John Doe",
+    this.holderStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+    ),
+    this.cardType = CardType.chip,
   });
 
   /// #### Width
@@ -112,6 +142,18 @@ class CreditCardFM extends StatefulWidget {
   /// </div>
   final Gradient? gradient;
 
+  final String title;
+  final TextStyle titleStyle;
+  final String number;
+  final TextStyle numberStyle;
+  final String validThur;
+  final TextStyle validThurStyle;
+  final String cvv;
+  final TextStyle cvvStyle;
+  final String holder;
+  final TextStyle holderStyle;
+  final CardType cardType;
+
   @override
   State<CreditCardFM> createState() => _CreditCardFMState();
 }
@@ -126,7 +168,19 @@ class _CreditCardFMState extends State<CreditCardFM> {
       margin: widget.margin,
       constraints: cardConstraint(),
       decoration: cardDecoration(),
-      child: const CardBody(),
+      child: CardBody(
+        title: widget.title,
+        titleStyle: widget.titleStyle,
+        number: widget.number,
+        numberStyle: widget.numberStyle,
+        validThur: widget.validThur,
+        validThurStyle: widget.validThurStyle,
+        cvv: widget.cvv,
+        cvvStyle: widget.cvvStyle,
+        holder: widget.holder,
+        holderStyle: widget.holderStyle,
+        cardType: widget.cardType,
+      ),
     );
   }
 
