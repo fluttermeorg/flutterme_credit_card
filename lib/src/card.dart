@@ -1,4 +1,5 @@
-import 'package:credit_card_flutterme/src/credit_cardfm/widgets/card_body.dart';
+import 'package:credit_card_flutterme/src/utils/nums.dart';
+import 'package:credit_card_flutterme/src/widgets/card_body.dart';
 import 'package:flutter/material.dart';
 
 class CreditCardFM extends StatefulWidget {
@@ -31,7 +32,8 @@ class CreditCardFM extends StatefulWidget {
       fontSize: 16,
       fontWeight: FontWeight.bold,
     ),
-    this.number = "**** **** **** ****",
+    this.number = "0000000000000000",
+    this.numberMaskType = MaskType.full,
     this.numberStyle = const TextStyle(
       color: Colors.white,
       fontSize: 24,
@@ -146,6 +148,7 @@ class CreditCardFM extends StatefulWidget {
   final TextStyle titleStyle;
   final String number;
   final TextStyle numberStyle;
+  final MaskType numberMaskType;
   final String validThur;
   final TextStyle validThurStyle;
   final String cvv;
@@ -173,6 +176,7 @@ class _CreditCardFMState extends State<CreditCardFM> {
         titleStyle: widget.titleStyle,
         number: widget.number,
         numberStyle: widget.numberStyle,
+        numberMaskType: widget.numberMaskType,
         validThur: widget.validThur,
         validThurStyle: widget.validThurStyle,
         cvv: widget.cvv,
@@ -205,27 +209,4 @@ class _CreditCardFMState extends State<CreditCardFM> {
       gradient: widget.gradient,
     );
   }
-}
-
-/// #### Card Type
-/// used in the selection of card type during the card validation stage.
-/// This have all the type of supported cards in a `enum`.
-///
-/// ##### List of supported cards
-/// <div align="center">
-/// <img src="https://raw.githubusercontent.com/ibukunoluwanap/credit_card_flutterme/main/images/docs/support_cards.png" width="50%">
-/// </div>
-enum CardType {
-  amex,
-  chip,
-  diners,
-  discover,
-  elo,
-  hipercard,
-  jcb,
-  maestro,
-  mastercard,
-  mir,
-  unionpay,
-  visa,
 }
