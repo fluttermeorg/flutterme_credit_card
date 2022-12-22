@@ -1,5 +1,5 @@
-import 'package:credit_card_flutterme/src/utils/nums.dart';
-import 'package:credit_card_flutterme/src/utils/validation.dart';
+import 'package:credit_card_flutterme/src/utils/constants.dart';
+import 'package:credit_card_flutterme/src/utils/validations.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatefulWidget {
@@ -29,11 +29,12 @@ class CardBody extends StatefulWidget {
     required this.numberMaskType,
     required this.validThur,
     required this.validThurStyle,
+    required this.validThurMaskType,
     required this.cvv,
     required this.cvvStyle,
+    required this.cvvMaskType,
     required this.holder,
     required this.holderStyle,
-    required this.cardType,
   });
   final String title;
   final TextStyle titleStyle;
@@ -42,11 +43,12 @@ class CardBody extends StatefulWidget {
   final MaskType numberMaskType;
   final String validThur;
   final TextStyle validThurStyle;
+  final MaskType validThurMaskType;
   final String cvv;
   final TextStyle cvvStyle;
+  final MaskType cvvMaskType;
   final String holder;
   final TextStyle holderStyle;
-  final CardType cardType;
 
   @override
   State<CardBody> createState() => _CardBodyState();
@@ -78,11 +80,14 @@ class _CardBodyState extends State<CardBody> {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Image.asset(
-          cardIcon(type: widget.cardType),
-          width: 60,
-          fit: BoxFit.cover,
-          package: "credit_card_flutterme",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Image.asset(
+            cardIcon(number: widget.number),
+            width: 60,
+            fit: BoxFit.cover,
+            package: "credit_card_flutterme",
+          ),
         )
       ],
     );
@@ -102,7 +107,6 @@ class _CardBodyState extends State<CardBody> {
             ),
             style: widget.numberStyle,
             maxLines: 1,
-            
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 10),
@@ -119,7 +123,13 @@ class _CardBodyState extends State<CardBody> {
                       fontSize: 10,
                     ),
                   ),
-                  Text(widget.validThur, style: widget.validThurStyle),
+                  Text(
+                    maskValidThur(
+                      validThur: widget.validThur,
+                      maskType: widget.validThurMaskType,
+                    ),
+                    style: widget.validThurStyle,
+                  ),
                 ],
               ),
               Column(
@@ -131,7 +141,13 @@ class _CardBodyState extends State<CardBody> {
                       fontSize: 10,
                     ),
                   ),
-                  Text(widget.cvv, style: widget.cvvStyle),
+                  Text(
+                    maskCVV(
+                      cvv: widget.cvv,
+                      maskType: widget.cvvMaskType,
+                    ),
+                    style: widget.cvvStyle,
+                  ),
                 ],
               )
             ],
