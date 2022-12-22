@@ -1,4 +1,5 @@
-import 'package:credit_card_flutterme/src/credit_cardfm/widgets/card_body.dart';
+import 'package:credit_card_flutterme/src/utils/constants.dart';
+import 'package:credit_card_flutterme/src/widgets/card_body.dart';
 import 'package:flutter/material.dart';
 
 class CreditCardFM extends StatefulWidget {
@@ -31,28 +32,30 @@ class CreditCardFM extends StatefulWidget {
       fontSize: 16,
       fontWeight: FontWeight.bold,
     ),
-    this.number = "**** **** **** ****",
+    this.number = "0000000000000000",
     this.numberStyle = const TextStyle(
       color: Colors.white,
       fontSize: 24,
       fontWeight: FontWeight.bold,
     ),
-    this.validThur = "**/**",
+    this.numberMaskType = MaskType.full,
+    this.validThur = "****",
     this.validThurStyle = const TextStyle(
       color: Colors.white,
       fontSize: 14,
     ),
+    this.validThurMaskType = MaskType.full,
     this.cvv = "***",
     this.cvvStyle = const TextStyle(
       color: Colors.white,
       fontSize: 14,
     ),
+    this.cvvMaskType = MaskType.full,
     this.holder = "John Doe",
     this.holderStyle = const TextStyle(
       color: Colors.white,
       fontSize: 20,
     ),
-    this.cardType = CardType.chip,
   });
 
   /// #### Width
@@ -146,13 +149,25 @@ class CreditCardFM extends StatefulWidget {
   final TextStyle titleStyle;
   final String number;
   final TextStyle numberStyle;
+  final MaskType numberMaskType;
   final String validThur;
   final TextStyle validThurStyle;
+
+  /// #### Valid Thur Mask Type
+  ///
+  /// This only accept the `full` and `none` Mask Types. If any other type is passed it
+  /// will return 000.
+  final MaskType validThurMaskType;
   final String cvv;
   final TextStyle cvvStyle;
+
+  /// #### CVV Mask Type
+  ///
+  /// This only accept the `full` and `none` Mask Types. If any other type is passed it
+  /// will return 000.
+  final MaskType cvvMaskType;
   final String holder;
   final TextStyle holderStyle;
-  final CardType cardType;
 
   @override
   State<CreditCardFM> createState() => _CreditCardFMState();
@@ -173,13 +188,15 @@ class _CreditCardFMState extends State<CreditCardFM> {
         titleStyle: widget.titleStyle,
         number: widget.number,
         numberStyle: widget.numberStyle,
+        numberMaskType: widget.numberMaskType,
         validThur: widget.validThur,
         validThurStyle: widget.validThurStyle,
+        validThurMaskType: widget.validThurMaskType,
         cvv: widget.cvv,
         cvvStyle: widget.cvvStyle,
+        cvvMaskType: widget.cvvMaskType,
         holder: widget.holder,
         holderStyle: widget.holderStyle,
-        cardType: widget.cardType,
       ),
     );
   }
@@ -205,27 +222,4 @@ class _CreditCardFMState extends State<CreditCardFM> {
       gradient: widget.gradient,
     );
   }
-}
-
-/// #### Card Type
-/// used in the selection of card type during the card validation stage.
-/// This have all the type of supported cards in a `enum`.
-///
-/// ##### List of supported cards
-/// <div align="center">
-/// <img src="https://raw.githubusercontent.com/ibukunoluwanap/credit_card_flutterme/main/images/docs/support_cards.png" width="50%">
-/// </div>
-enum CardType {
-  amex,
-  chip,
-  diners,
-  discover,
-  elo,
-  hipercard,
-  jcb,
-  maestro,
-  mastercard,
-  mir,
-  unionpay,
-  visa,
 }

@@ -1,4 +1,5 @@
-import 'package:credit_card_flutterme/credit_card_flutterme.dart';
+import 'package:credit_card_flutterme/src/utils/constants.dart';
+import 'package:credit_card_flutterme/src/utils/validations.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatefulWidget {
@@ -15,7 +16,7 @@ class CardBody extends StatefulWidget {
   /// - Holder
   /// - Holder Style
   /// - Card Type
-  /// 
+  ///
   /// <div align="center">
   /// <img src="https://raw.githubusercontent.com/ibukunoluwanap/credit_card_flutterme/main/images/docs/card.png" width="50%">
   /// </div>
@@ -25,25 +26,29 @@ class CardBody extends StatefulWidget {
     required this.titleStyle,
     required this.number,
     required this.numberStyle,
+    required this.numberMaskType,
     required this.validThur,
     required this.validThurStyle,
+    required this.validThurMaskType,
     required this.cvv,
     required this.cvvStyle,
+    required this.cvvMaskType,
     required this.holder,
     required this.holderStyle,
-    required this.cardType,
   });
   final String title;
   final TextStyle titleStyle;
   final String number;
   final TextStyle numberStyle;
+  final MaskType numberMaskType;
   final String validThur;
   final TextStyle validThurStyle;
+  final MaskType validThurMaskType;
   final String cvv;
   final TextStyle cvvStyle;
+  final MaskType cvvMaskType;
   final String holder;
   final TextStyle holderStyle;
-  final CardType cardType;
 
   @override
   State<CardBody> createState() => _CardBodyState();
@@ -75,11 +80,14 @@ class _CardBodyState extends State<CardBody> {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Image.asset(
-          cardTypeIcon(widget.cardType),
-          width: 60,
-          fit: BoxFit.cover,
-          package: "credit_card_flutterme",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Image.asset(
+            cardIcon(number: widget.number),
+            width: 60,
+            fit: BoxFit.cover,
+            package: "credit_card_flutterme",
+          ),
         )
       ],
     );
@@ -93,7 +101,10 @@ class _CardBodyState extends State<CardBody> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.number,
+            maskCardNumber(
+              number: widget.number,
+              maskType: widget.numberMaskType,
+            ),
             style: widget.numberStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -112,7 +123,13 @@ class _CardBodyState extends State<CardBody> {
                       fontSize: 10,
                     ),
                   ),
-                  Text(widget.validThur, style: widget.validThurStyle),
+                  Text(
+                    maskValidThur(
+                      validThur: widget.validThur,
+                      maskType: widget.validThurMaskType,
+                    ),
+                    style: widget.validThurStyle,
+                  ),
                 ],
               ),
               Column(
@@ -124,7 +141,13 @@ class _CardBodyState extends State<CardBody> {
                       fontSize: 10,
                     ),
                   ),
-                  Text(widget.cvv, style: widget.cvvStyle),
+                  Text(
+                    maskCVV(
+                      cvv: widget.cvv,
+                      maskType: widget.cvvMaskType,
+                    ),
+                    style: widget.cvvStyle,
+                  ),
                 ],
               )
             ],
@@ -141,34 +164,5 @@ class _CardBodyState extends State<CardBody> {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
-  }
-
-  String cardTypeIcon(CardType type) {
-    switch (type) {
-      case CardType.amex:
-        return "images/cards/amex.png";
-      case CardType.chip:
-        return "images/cards/chip.png";
-      case CardType.diners:
-        return "images/cards/diners.png";
-      case CardType.discover:
-        return "images/cards/discover.png";
-      case CardType.elo:
-        return "images/cards/elo.png";
-      case CardType.hipercard:
-        return "images/cards/hipercard.png";
-      case CardType.jcb:
-        return "images/cards/jcb.png";
-      case CardType.maestro:
-        return "images/cards/maestro.png";
-      case CardType.mastercard:
-        return "images/cards/mastercard.png";
-      case CardType.mir:
-        return "images/cards/mir.png";
-      case CardType.unionpay:
-        return "images/cards/unionpay.png";
-      case CardType.visa:
-        return "images/cards/visa.png";
-    }
   }
 }
