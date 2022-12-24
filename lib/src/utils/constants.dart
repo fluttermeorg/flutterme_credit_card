@@ -1,12 +1,8 @@
-/// #### Card Type
-/// used in the selection of card type during the card validation stage.
-/// This have all the type of supported cards in a `enum`.
-///
-/// ##### List of supported cards
-/// <div align="center">
-/// <img src="https://raw.githubusercontent.com/ibukunoluwanap/credit_card_flutterme/main/images/docs/support_cards.png" width="50%">
-/// </div>
-enum CardType {
+/// ## FM Card Type
+/// ### **Type:** `enum`
+/// Used in the selection of card type during the card validation stage.
+/// This have all the type of supported cards.
+enum FMCardType {
   amex,
   chip,
   diners,
@@ -21,7 +17,10 @@ enum CardType {
   visa,
 }
 
-enum MaskType {
+/// ## FM Mask Type
+/// ### **Type:** `enum`
+/// Used in the masking validation. This have all the supported mask types.
+enum FMMaskType {
   full,
   first4Last4,
   first6last2,
@@ -29,23 +28,26 @@ enum MaskType {
   none,
 }
 
-Map<CardType, Set<List<String>>> numberPattern = {
-  CardType.amex: {
+/// ## FM Mask Type
+/// ### **Type:** `Map<FMCardType, Set<List<String>>>`
+/// The are they patterns for all the supported card companies.
+Map<FMCardType, Set<List<String>>> numberPattern = {
+  FMCardType.amex: {
     ["34"],
     ["37"],
   },
-  CardType.diners: {
+  FMCardType.diners: {
     ["300", "305"],
     ["36"],
     ["38"],
     ["39"],
   },
-  CardType.discover: {
+  FMCardType.discover: {
     ["6011"],
     ["644", "649"],
     ["65"],
   },
-  CardType.elo: {
+  FMCardType.elo: {
     ["401178"],
     ["401179"],
     ["438935"],
@@ -72,7 +74,7 @@ Map<CardType, Set<List<String>>> numberPattern = {
     ["655000", "655019"],
     ["655021", "655058"],
   },
-  CardType.hipercard: {
+  FMCardType.hipercard: {
     ["606282"],
     ["637095"],
     ["637568"],
@@ -82,12 +84,12 @@ Map<CardType, Set<List<String>>> numberPattern = {
     ["63743358"],
     ["63737423"],
   },
-  CardType.jcb: {
+  FMCardType.jcb: {
     ["3528", "3589"],
     ["2131"],
     ["1800"],
   },
-  CardType.maestro: {
+  FMCardType.maestro: {
     ["493698"],
     ["500000", "506698"],
     ["506779", "508999"],
@@ -95,7 +97,7 @@ Map<CardType, Set<List<String>>> numberPattern = {
     ["63"],
     ["67"],
   },
-  CardType.mastercard: {
+  FMCardType.mastercard: {
     ["51", "55"],
     ["2221", "2229"],
     ["223", "229"],
@@ -103,10 +105,10 @@ Map<CardType, Set<List<String>>> numberPattern = {
     ["270", "271"],
     ["2720"],
   },
-  CardType.mir: {
+  FMCardType.mir: {
     ["2200", "2204"],
   },
-  CardType.unionpay: {
+  FMCardType.unionpay: {
     ["620"],
     ["624", "626"],
     ["62100", "62182"],
@@ -133,7 +135,7 @@ Map<CardType, Set<List<String>>> numberPattern = {
     ["8152", "8163"],
     ["8164", "8171"],
   },
-  CardType.visa: {
+  FMCardType.visa: {
     ["4"],
   }
 };

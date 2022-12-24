@@ -135,12 +135,12 @@ The credit card package have support for majority of the credit cards available 
   
   <h4>Special THANKS to our authors and contributions</h4>
   <a href="https://github.com/orgs/fluttermeorg/people">
-    <img src="https://contrib.rocks/image?repo=fluttermeorg/credit_card_flutterme" alt="authors and contributions"/>
+    <img src="https://contrib.rocks/image?repo=fluttermeorg/flutterme_credit_card" alt="authors and contributions"/>
   </a>
   
-  Any issue(s) discovered should be reported at [issues](https://github.com/fluttermeorg/credit_card_flutterme/issues)
+  Any issue(s) discovered should be reported at [issues](https://github.com/fluttermeorg/flutterme_credit_card/issues)
   <br/>
-  Any contribution(s) should be submitted at [contributions](https://github.com/fluttermeorg/credit_card_flutterme/pulls)
+  Any contribution(s) should be submitted at [contributions](https://github.com/fluttermeorg/flutterme_credit_card/pulls)
   <br/>
   Checkout [flutterme for more](https://github.com/fluttermeorg)
 </div>

@@ -1,25 +1,21 @@
-import 'package:credit_card_flutterme/src/utils/constants.dart';
-import 'package:credit_card_flutterme/src/utils/validations.dart';
+import 'package:flutterme_credit_card/src/utils/constants.dart';
+import 'package:flutterme_credit_card/src/utils/validations.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatefulWidget {
-  /// #### Card Body
+  /// ## Card Body
   /// This contain all the data within the card. Such data include
-  /// - Title
-  /// - Title Style
-  /// - Number
-  /// - Number Style
-  /// - Valid Thur
-  /// - Valid Thur Style
-  /// - CVV
-  /// - CVV Style
-  /// - Holder
-  /// - Holder Style
-  /// - Card Type
-  ///
-  /// <div align="center">
-  /// <img src="https://raw.githubusercontent.com/ibukunoluwanap/credit_card_flutterme/main/images/docs/card.png" width="50%">
-  /// </div>
+  /// * Title
+  /// * Title Style
+  /// * Number
+  /// * Number Style
+  /// * Valid Thur
+  /// * Valid Thur Style
+  /// * CVV
+  /// * CVV Style
+  /// * Holder
+  /// * Holder Style
+  /// * Card Type
   const CardBody({
     super.key,
     required this.title,
@@ -40,13 +36,13 @@ class CardBody extends StatefulWidget {
   final TextStyle titleStyle;
   final String number;
   final TextStyle numberStyle;
-  final MaskType numberMaskType;
+  final FMMaskType numberMaskType;
   final String validThur;
   final TextStyle validThurStyle;
-  final MaskType validThurMaskType;
+  final FMMaskType validThurMaskType;
   final String cvv;
   final TextStyle cvvStyle;
-  final MaskType cvvMaskType;
+  final FMMaskType cvvMaskType;
   final String holder;
   final TextStyle holderStyle;
 
@@ -60,14 +56,13 @@ class _CardBodyState extends State<CardBody> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        header(),
-        body(),
-        footer(),
-      ],
+      children: [header(), body(), footer()],
     );
   }
 
+  /// ## Header
+  /// ### **Type:** `Widget`
+  /// The card header containing the *Card Title* and the *Card Type*
   Widget header() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,13 +81,16 @@ class _CardBodyState extends State<CardBody> {
             cardIcon(number: widget.number),
             width: 60,
             fit: BoxFit.cover,
-            package: "credit_card_flutterme",
+            package: "flutterme_credit_card",
           ),
         )
       ],
     );
   }
 
+  /// ## Body
+  /// ### **Type:** `Widget`
+  /// The card body containing the *Card Number*, *Card Valid Thur* and the *Card CVV*
   Widget body() {
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -157,6 +155,9 @@ class _CardBodyState extends State<CardBody> {
     );
   }
 
+  /// ## Footer
+  /// ### **Type:** `Widget`
+  /// The card footer containing the *Card Holder Name*
   Widget footer() {
     return Text(
       widget.holder,
