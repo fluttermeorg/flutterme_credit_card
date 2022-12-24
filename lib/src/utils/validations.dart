@@ -1,45 +1,57 @@
-import 'package:credit_card_flutterme/src/utils/constants.dart';
-import 'package:credit_card_flutterme/src/utils/exceptions.dart';
+import 'package:flutterme_credit_card/src/utils/constants.dart';
+import 'package:flutterme_credit_card/src/utils/exceptions.dart';
 
-// extension for int manipulations 
+/// ## Range
+/// ### **Type:** `num`
+/// It's an extension for all int manipulations
 extension Range on num {
   bool isBetween(num from, num to) {
     return from <= this && this <= to;
   }
 }
 
-CardType detectCardType({required String number}) {
-  CardType cardType = CardType.chip; // default
+/// ## Detect Card Type
+/// ### **Type:** `FMCardType`
+/// Check the card number given and produce the accurate card type
+/// using the card patterns in [numberPattern]. If no such card,
+/// it returns a chip type.
+FMCardType detectCardType({required String number}) {
+  // setting a default card type
+  FMCardType cardType = FMCardType.chip;
 
-  // check for white space
+  // checking for white space
   number = number.replaceAll(RegExp(r'\s+\b|\b\s'), "");
 
-  // check if number is empty
+  // checking if number is empty
   if (number.isEmpty) return cardType;
 
-  // check if contain only numerics
+  // checking if number contain only numerics
   if (RegExp(r'\D+').hasMatch(number)) return cardType;
 
   numberPattern.forEach(
-    (CardType type, Set<List<String>> patterns) {
+    (FMCardType type, Set<List<String>> patterns) {
       for (List<String> pattern in patterns) {
         // creating inner card number variable storage
         String newNumber = number;
 
-        // get the pattern length
+        // getting the pattern length
         int patternLength = pattern[0].length;
 
+        // make the card number length match the pattern length
         if (patternLength < number.length) {
           newNumber = newNumber.substring(0, patternLength);
         }
 
+        // some patterns contain a length less than zero. To avoid
+        // [Out Of Range] error we will have to handle them separately
+        // within the else statement.
         if (pattern.length > 1) {
           // making parser to int for manipulation
           int numberAsInt = int.parse(newNumber);
           int startPattern = int.parse(pattern[0]);
           int endPattern = int.parse(pattern[1]);
 
-          // check if it contains ending pattern or not
+          // checking if number contains ending pattern or not
           if (numberAsInt >= startPattern && numberAsInt <= endPattern) {
             cardType = type;
             break;
@@ -54,48 +66,59 @@ CardType detectCardType({required String number}) {
     },
   );
 
+  // finally return the card type
   return cardType;
 }
 
+/// ## Card Icon
+/// ### **Type:** `String`
+/// This takes the card number, and uses the [detectCardType] function to
+/// to check the card type and returns an assets [URL] for the card company
+/// image [Card Icon]
 String cardIcon({required String number}) {
   switch (detectCardType(number: number)) {
-    case CardType.amex:
-      return "images/cards/amex.png";
-    case CardType.chip:
-      return "images/cards/chip.png";
-    case CardType.diners:
-      return "images/cards/diners.png";
-    case CardType.discover:
-      return "images/cards/discover.png";
-    case CardType.elo:
-      return "images/cards/elo.png";
-    case CardType.hipercard:
-      return "images/cards/hipercard.png";
-    case CardType.jcb:
-      return "images/cards/jcb.png";
-    case CardType.maestro:
-      return "images/cards/maestro.png";
-    case CardType.mastercard:
-      return "images/cards/mastercard.png";
-    case CardType.mir:
-      return "images/cards/mir.png";
-    case CardType.unionpay:
-      return "images/cards/unionpay.png";
-    case CardType.visa:
-      return "images/cards/visa.png";
+    case FMCardType.amex:
+      return "images/amex.png"; // American Express
+    case FMCardType.chip:
+      return "images/chip.png"; // Chip
+    case FMCardType.diners:
+      return "images/diners.png"; // Diners
+    case FMCardType.discover:
+      return "images/discover.png"; // Discover
+    case FMCardType.elo:
+      return "images/elo.png"; // Elo
+    case FMCardType.hipercard:
+      return "images/hipercard.png"; // Hipercard
+    case FMCardType.jcb:
+      return "images/jcb.png"; // JCB
+    case FMCardType.maestro:
+      return "images/maestro.png"; // Maestro
+    case FMCardType.mastercard:
+      return "images/mastercard.png"; // Mastercard
+    case FMCardType.mir:
+      return "images/mir.png"; // Mir
+    case FMCardType.unionpay:
+      return "images/unionpay.png"; // Unionpay
+    case FMCardType.visa:
+      return "images/visa.png"; // Visa
   }
 }
 
-String maskCardNumber({required String number, required MaskType maskType}) {
+/// ## Mask Card Number
+/// ### **Type:** `String`
+/// Use in the masking process of card number. It requires the card number
+/// and mask type and uses these two params to mask the card number.
+String maskCardNumber({required String number, required FMMaskType maskType}) {
   // getting mask type condition added by the developer
-  bool full = maskType == MaskType.full;
-  bool first4Last4 = maskType == MaskType.first4Last4;
-  bool first6last2 = maskType == MaskType.first6last2;
-  bool first2last6 = maskType == MaskType.first2last6;
-  bool none = maskType == MaskType.none;
-  String mask = "0000 0000 0000 0000"; // default
+  bool full = maskType == FMMaskType.full;
+  bool first4Last4 = maskType == FMMaskType.first4Last4;
+  bool first6last2 = maskType == FMMaskType.first6last2;
+  bool first2last6 = maskType == FMMaskType.first2last6;
+  bool none = maskType == FMMaskType.none;
+  String mask = "0000 0000 0000 0000";
   var bufferString = StringBuffer();
 
+  // card number length less than two are not validated to avoid [Out Of Range].
   if (number.length > 2) {
     if (full) {
       mask = "*" * number.length;
@@ -119,6 +142,7 @@ String maskCardNumber({required String number, required MaskType maskType}) {
     }
   }
 
+  // this is to buff the number using space after every 4 characters
   for (int i = 0; i < mask.length; i++) {
     bufferString.write(mask[i]);
     var nonZeroIndexValue = i + 1;
@@ -127,51 +151,60 @@ String maskCardNumber({required String number, required MaskType maskType}) {
     }
   }
 
+  // finally return the buffed number
   return bufferString.toString();
 }
 
-String maskValidThur({required String validThur, required MaskType maskType}) {
+/// ## Mask Valid Thur
+/// ### **Type:** `String`
+/// Use in the masking process of valid thur. It requires the card valid thur
+/// and mask type and uses these two params to mask the card valid thur.
+String maskValidThur({
+  required String validThur,
+  required FMMaskType maskType,
+}) {
   // getting mask type condition added by the developer
-  bool full = maskType == MaskType.full;
-  bool none = maskType == MaskType.none;
-  String mask = "0000"; // default
+  bool full = maskType == FMMaskType.full;
+  bool none = maskType == FMMaskType.none;
+  String mask = "0000";
   var bufferString = StringBuffer();
 
   if (validThur.length != 4) {
-    throw FluttermeCardException(
+    throw FMCardException(
       "Valid Thur must be 4 characters in length. They first two characters represent the MONTH and the last two characters represent the YEAR!",
     );
   }
-
-// get current year
+  
+  // getting current month and year
   int currentMonth = DateTime.now().month;
   int currentYear = int.parse("${DateTime.now().year}".substring(2, 4));
 
-  // get the given month
+  // getting the given month and year
   int month = int.parse(validThur.substring(0, 2));
-  // get the given year
   int year = int.parse(validThur.substring(2, 4));
 
-  // check if month is valid
+  // checking if month and year are valid
   bool isMonthValid = month.isBetween(1, 12);
-  // check if year is valid
   bool isYearValid = year >= currentYear;
 
+  // throw [FMCardException] if month is invalid
   if (!isMonthValid) {
-    throw FluttermeCardException(
+    throw FMCardException(
       "Invalid month given. Month range must be between 01-12!",
     );
   }
 
+  // throw [FMCardException] if year is invalid
   if (!isYearValid) {
-    throw FluttermeCardException(
+    throw FMCardException(
       "Invalid year given. Year must be in the future!",
     );
   }
 
-  // To handle expiring card
+  // NOTE: this is not currently active. It's just and idea added for future
+  // updates.It's function is to handle expiring card [FMCardException]
   if (month == currentMonth && year == currentYear) {
-    //   throw FluttermeCardException("Card expiring this month!");
+    //   throw FMCardException("Card expiring this month!");
   }
 
   if (full) {
@@ -180,6 +213,7 @@ String maskValidThur({required String validThur, required MaskType maskType}) {
     mask = validThur;
   }
 
+  // this is to buff the valid thur using / after first 2 characters
   for (int i = 0; i < mask.length; i++) {
     bufferString.write(mask[i]);
     var nonZeroIndexValue = i + 1;
@@ -188,20 +222,26 @@ String maskValidThur({required String validThur, required MaskType maskType}) {
     }
   }
 
+  // finally return the buffed valid thur
   return bufferString.toString();
 }
 
-String maskCVV({required String cvv, required MaskType maskType}) {
+/// ## Mask CVV
+/// ### **Type:** `String`
+/// Use in the masking process of CVV. It requires the card CVV
+/// and mask type and uses these two params to mask the card CVV.
+String maskCVV({required String cvv, required FMMaskType maskType}) {
   // getting mask type condition added by the developer
-  bool full = maskType == MaskType.full;
-  bool none = maskType == MaskType.none;
-  String mask = "000"; // default
+  bool full = maskType == FMMaskType.full;
+  bool none = maskType == FMMaskType.none;
+  String mask = "000";
 
-  // check if cvv is valid
+  // checking if cvv is valid
   bool isCVVValid = cvv.length.isBetween(3, 4);
 
+  // throw [FMCardException] if CVV is invalid
   if (!isCVVValid) {
-    throw FluttermeCardException("CVV must be 3 or 4 characters in length!");
+    throw FMCardException("CVV must be 3 or 4 characters in length!");
   }
 
   if (full) {
@@ -210,5 +250,6 @@ String maskCVV({required String cvv, required MaskType maskType}) {
     mask = cvv;
   }
 
+  // finally return the masked cvv
   return mask;
 }
