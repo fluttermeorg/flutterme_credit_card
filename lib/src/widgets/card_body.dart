@@ -9,8 +9,8 @@ class CardBody extends StatefulWidget {
   /// * Title Style
   /// * Number
   /// * Number Style
-  /// * Valid Thur
-  /// * Valid Thur Style
+  /// * Valid Thru
+  /// * Valid Thru Style
   /// * CVV
   /// * CVV Style
   /// * Holder
@@ -23,9 +23,9 @@ class CardBody extends StatefulWidget {
     required this.number,
     required this.numberStyle,
     required this.numberMaskType,
-    required this.validThur,
-    required this.validThurStyle,
-    required this.validThurMaskType,
+    required this.validThru,
+    required this.validThruStyle,
+    required this.validThruMaskType,
     required this.cvv,
     required this.cvvStyle,
     required this.cvvMaskType,
@@ -37,9 +37,9 @@ class CardBody extends StatefulWidget {
   final String number;
   final TextStyle numberStyle;
   final FMMaskType numberMaskType;
-  final String validThur;
-  final TextStyle validThurStyle;
-  final FMMaskType validThurMaskType;
+  final String validThru;
+  final TextStyle validThruStyle;
+  final FMMaskType validThruMaskType;
   final String cvv;
   final TextStyle cvvStyle;
   final FMMaskType cvvMaskType;
@@ -90,7 +90,7 @@ class _CardBodyState extends State<CardBody> {
 
   /// ## Body
   /// ### **Type:** `Widget`
-  /// The card body containing the *Card Number*, *Card Valid Thur* and the *Card CVV*
+  /// The card body containing the *Card Number*, *Card Valid Thru* and the *Card CVV*
   Widget body() {
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -115,18 +115,18 @@ class _CardBodyState extends State<CardBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Valid Thur",
+                    "Valid Thru",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 10,
                     ),
                   ),
                   Text(
-                    maskValidThur(
-                      validThur: widget.validThur,
-                      maskType: widget.validThurMaskType,
+                    maskValidThru(
+                      validThru: widget.validThru,
+                      maskType: widget.validThruMaskType,
                     ),
-                    style: widget.validThurStyle,
+                    style: widget.validThruStyle,
                   ),
                 ],
               ),

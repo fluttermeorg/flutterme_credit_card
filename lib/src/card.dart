@@ -36,9 +36,9 @@ class FMCreditCard extends StatefulWidget {
       fontWeight: FontWeight.bold,
     ),
     this.numberMaskType = FMMaskType.full,
-    this.validThur = "****",
-    this.validThurStyle = const TextStyle(color: Colors.white),
-    this.validThurMaskType = FMMaskType.full,
+    this.validThru = "****",
+    this.validThruStyle = const TextStyle(color: Colors.white),
+    this.validThruMaskType = FMMaskType.full,
     this.cvv = "***",
     this.cvvStyle = const TextStyle(color: Colors.white),
     this.cvvMaskType = FMMaskType.full,
@@ -143,24 +143,24 @@ class FMCreditCard extends StatefulWidget {
   /// To mask the card number for security reasons. This accept the all Mask Types.
   final FMMaskType numberMaskType;
 
-  /// ## Valid Thur
+  /// ## Valid Thru
   /// ### **Type:** `String`
   /// ### **Default:** `****`
-  /// This is the card valid thur placement area.
-  final String validThur;
+  /// This is the card valid thru placement area.
+  final String validThru;
 
-  /// ## Valid Thur Style
+  /// ## Valid Thru Style
   /// ### **Type:** `TextStyle`
   /// ### **Default:** `const TextStyle(color: Colors.white)`
-  /// This is to style the card valid thur placement area.
-  final TextStyle validThurStyle;
+  /// This is to style the card valid thru placement area.
+  final TextStyle validThruStyle;
 
-  /// ## Valid Thur Mask Type
+  /// ## Valid Thru Mask Type
   /// ### **Type:** `FMMaskType`
   /// ### **Default:** `FMMaskType.full`
-  /// To mask the Valid Thur for security reasons. This only accept the `full` and `none` Mask Types.
+  /// To mask the Valid Thru for security reasons. This only accept the `full` and `none` Mask Types.
   /// If any other type is passed it will return "****".
-  final FMMaskType validThurMaskType;
+  final FMMaskType validThruMaskType;
 
   /// ## CVV
   /// ### **Type:** `String`
@@ -213,9 +213,9 @@ class _FMCreditCardState extends State<FMCreditCard> {
         number: widget.number,
         numberStyle: widget.numberStyle,
         numberMaskType: widget.numberMaskType,
-        validThur: widget.validThur,
-        validThurStyle: widget.validThurStyle,
-        validThurMaskType: widget.validThurMaskType,
+        validThru: widget.validThru,
+        validThruStyle: widget.validThruStyle,
+        validThruMaskType: widget.validThruMaskType,
         cvv: widget.cvv,
         cvvStyle: widget.cvvStyle,
         cvvMaskType: widget.cvvMaskType,

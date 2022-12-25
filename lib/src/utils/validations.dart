@@ -155,12 +155,12 @@ String maskCardNumber({required String number, required FMMaskType maskType}) {
   return bufferString.toString();
 }
 
-/// ## Mask Valid Thur
+/// ## Mask Valid Thru
 /// ### **Type:** `String`
-/// Use in the masking process of valid thur. It requires the card valid thur
-/// and mask type and uses these two params to mask the card valid thur.
-String maskValidThur({
-  required String validThur,
+/// Use in the masking process of valid thru. It requires the card valid thru
+/// and mask type and uses these two params to mask the card valid thru.
+String maskValidThru({
+  required String validThru,
   required FMMaskType maskType,
 }) {
   // getting mask type condition added by the developer
@@ -169,9 +169,9 @@ String maskValidThur({
   String mask = "0000";
   var bufferString = StringBuffer();
 
-  if (validThur.length != 4) {
+  if (validThru.length != 4) {
     throw FMCardException(
-      "Valid Thur must be 4 characters in length. They first two characters represent the MONTH and the last two characters represent the YEAR!",
+      "Valid Thru must be 4 characters in length. They first two characters represent the MONTH and the last two characters represent the YEAR!",
     );
   }
   
@@ -180,8 +180,8 @@ String maskValidThur({
   int currentYear = int.parse("${DateTime.now().year}".substring(2, 4));
 
   // getting the given month and year
-  int month = int.parse(validThur.substring(0, 2));
-  int year = int.parse(validThur.substring(2, 4));
+  int month = int.parse(validThru.substring(0, 2));
+  int year = int.parse(validThru.substring(2, 4));
 
   // checking if month and year are valid
   bool isMonthValid = month.isBetween(1, 12);
@@ -208,12 +208,12 @@ String maskValidThur({
   }
 
   if (full) {
-    mask = "*" * validThur.length;
+    mask = "*" * validThru.length;
   } else if (none) {
-    mask = validThur;
+    mask = validThru;
   }
 
-  // this is to buff the valid thur using / after first 2 characters
+  // this is to buff the valid thru using / after first 2 characters
   for (int i = 0; i < mask.length; i++) {
     bufferString.write(mask[i]);
     var nonZeroIndexValue = i + 1;
@@ -222,7 +222,7 @@ String maskValidThur({
     }
   }
 
-  // finally return the buffed valid thur
+  // finally return the buffed valid thru
   return bufferString.toString();
 }
 
