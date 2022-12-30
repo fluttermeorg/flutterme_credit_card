@@ -5,90 +5,15 @@ import 'package:flutter/services.dart';
 
 export 'package:flutter/services.dart' show SmartQuotesType, SmartDashesType;
 
-/// A [FormField] that contains a [TextField].
-///
-/// This is a convenience widget that wraps a [TextField] widget in a
-/// [FormField].
-///
-/// A [Form] ancestor is not required. The [Form] simply makes it easier to
-/// save, reset, or validate multiple fields at once. To use without a [Form],
-/// pass a `GlobalKey<FormFieldState>` (see [GlobalKey]) to the constructor and use
-/// [GlobalKey.currentState] to save or reset the form field.
-///
-/// When a [controller] is specified, its [TextEditingController.text]
-/// defines the [initialValue]. If this [FormField] is part of a scrolling
-/// container that lazily constructs its children, like a [ListView] or a
-/// [CustomScrollView], then a [controller] should be specified.
-/// The controller's lifetime should be managed by a stateful widget ancestor
-/// of the scrolling container.
-///
-/// If a [controller] is not specified, [initialValue] can be used to give
-/// the automatically generated controller an initial value.
-///
-/// {@macro flutter.material.textfield.wantKeepAlive}
-///
-/// Remember to call [TextEditingController.dispose] of the [TextEditingController]
-/// when it is no longer needed. This will ensure any resources used by the object
-/// are discarded.
-///
-/// By default, `decoration` will apply the [ThemeData.inputDecorationTheme] for
-/// the current context to the [InputDecoration], see
-/// [InputDecoration.applyDefaults].
-///
-/// For a documentation about the various parameters, see [TextField].
-///
-/// {@tool snippet}
-///
-/// Creates a [FMHolderNameField] with an [InputDecoration] and validator function.
-///
-/// ![If the user enters valid text, the TextField appears normally without any warnings to the user](https://flutter.github.io/assets-for-api-docs/assets/material/text_form_field.png)
-///
-/// ![If the user enters invalid text, the error message returned from the validator function is displayed in dark red underneath the input](https://flutter.github.io/assets-for-api-docs/assets/material/text_form_field_error.png)
-///
-/// ```dart
-/// FMHolderNameField(
-///   decoration: const InputDecoration(
-///     icon: Icon(Icons.person),
-///     hintText: 'What do people call you?',
-///     labelText: 'Name *',
-///   ),
-///   onSaved: (String? value) {
-///     // This optional block of code can be used to run
-///     // code when the user saves the form.
-///   },
-///   validator: (String? value) {
-///     return (value != null && value.contains('@')) ? 'Do not use the @ char.' : null;
-///   },
-/// )
-/// ```
-/// {@end-tool}
-///
-/// {@tool dartpad}
-/// This example shows how to move the focus to the next field when the user
-/// presses the SPACE key.
-///
-/// ** See code in examples/api/lib/material/text_form_field/text_form_field.1.dart **
-/// {@end-tool}
-///
-/// See also:
-///
-///  * <https://material.io/design/components/text-fields.html>
-///  * [TextField], which is the underlying text field without the [Form]
-///    integration.
-///  * [InputDecorator], which shows the labels and other visual elements that
-///    surround the actual text editing widget.
-///  * Learn how to use a [TextEditingController] in one of our [cookbook recipes](https://flutter.dev/docs/cookbook/forms/text-field-changes#2-use-a-texteditingcontroller).
-class FMHolderNameField extends FormField<String> {
-  /// Creates a [FormField] that contains a [TextField].
-  ///
-  /// When a [controller] is specified, [initialValue] must be null (the
-  /// default). If [controller] is null, then a [TextEditingController]
-  /// will be constructed automatically and its `text` will be initialized
-  /// to [initialValue] or the empty string.
-  ///
-  /// For documentation about the various parameters, see the [TextField] class
-  /// and [TextField.new], the constructor.
-  FMHolderNameField({
+
+class FMHolderField extends FormField<String> {
+  /// ## Holder Field
+  /// 
+  /// ### **Type:** `FMHolderField`.
+  /// This field return a [TextFormField] type version for flutterme call
+  /// [FMHolderField]. It behaves and same way and contains same properties.
+  /// use it same way you would use the [TextFormField].
+  FMHolderField({
     super.key,
     this.controller,
     String? initialValue,
@@ -160,7 +85,7 @@ class FMHolderNameField extends FormField<String> {
          enabled: enabled ?? decoration?.enabled ?? true,
          autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
          builder: (FormFieldState<String> field) {
-           final _FMHolderNameFieldState state = field as _FMHolderNameFieldState;
+           final _FMHolderFieldState state = field as _FMHolderFieldState;
            final InputDecoration effectiveDecoration = (decoration ?? const InputDecoration())
                .applyDefaults(Theme.of(field.context).inputDecorationTheme);
            void onChangedHandler(String value) {
@@ -231,15 +156,15 @@ class FMHolderNameField extends FormField<String> {
   final TextEditingController? controller;
 
   @override
-  FormFieldState<String> createState() => _FMHolderNameFieldState();
+  FormFieldState<String> createState() => _FMHolderFieldState();
 }
 
-class _FMHolderNameFieldState extends FormFieldState<String> {
+class _FMHolderFieldState extends FormFieldState<String> {
   RestorableTextEditingController? _controller;
 
-  TextEditingController get _effectiveController => _fMHolderNameField.controller ?? _controller!.value;
+  TextEditingController get _effectiveController => _fMHolderField.controller ?? _controller!.value;
 
-  FMHolderNameField get _fMHolderNameField => super.widget as FMHolderNameField;
+  FMHolderField get _fMHolderField => super.widget as FMHolderField;
 
   @override
   void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
@@ -270,26 +195,26 @@ class _FMHolderNameFieldState extends FormFieldState<String> {
   @override
   void initState() {
     super.initState();
-    if (_fMHolderNameField.controller == null) {
+    if (_fMHolderField.controller == null) {
       _createLocalController(widget.initialValue != null ? TextEditingValue(text: widget.initialValue!) : null);
     } else {
-      _fMHolderNameField.controller!.addListener(_handleControllerChanged);
+      _fMHolderField.controller!.addListener(_handleControllerChanged);
     }
   }
 
   @override
-  void didUpdateWidget(FMHolderNameField oldWidget) {
+  void didUpdateWidget(FMHolderField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_fMHolderNameField.controller != oldWidget.controller) {
+    if (_fMHolderField.controller != oldWidget.controller) {
       oldWidget.controller?.removeListener(_handleControllerChanged);
-      _fMHolderNameField.controller?.addListener(_handleControllerChanged);
+      _fMHolderField.controller?.addListener(_handleControllerChanged);
 
-      if (oldWidget.controller != null && _fMHolderNameField.controller == null) {
+      if (oldWidget.controller != null && _fMHolderField.controller == null) {
         _createLocalController(oldWidget.controller!.value);
       }
 
-      if (_fMHolderNameField.controller != null) {
-        setValue(_fMHolderNameField.controller!.text);
+      if (_fMHolderField.controller != null) {
+        setValue(_fMHolderField.controller!.text);
         if (oldWidget.controller == null) {
           unregisterFromRestoration(_controller!);
           _controller!.dispose();
@@ -301,7 +226,7 @@ class _FMHolderNameFieldState extends FormFieldState<String> {
 
   @override
   void dispose() {
-    _fMHolderNameField.controller?.removeListener(_handleControllerChanged);
+    _fMHolderField.controller?.removeListener(_handleControllerChanged);
     _controller?.dispose();
     super.dispose();
   }

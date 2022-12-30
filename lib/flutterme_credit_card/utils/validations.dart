@@ -1,5 +1,6 @@
-import 'package:flutterme_credit_card/src/utils/constants.dart';
-import 'package:flutterme_credit_card/src/utils/exceptions.dart';
+import 'package:flutter/services.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card/utils/constants.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card/utils/exceptions.dart';
 
 /// ## Range
 /// ### **Type:** `num`
@@ -174,7 +175,7 @@ String maskValidThru({
       "Valid Thru must be 4 characters in length. They first two characters represent the MONTH and the last two characters represent the YEAR!",
     );
   }
-  
+
   // getting current month and year
   int currentMonth = DateTime.now().month;
   int currentYear = int.parse("${DateTime.now().year}".substring(2, 4));
@@ -252,4 +253,36 @@ String maskCVV({required String cvv, required FMMaskType maskType}) {
 
   // finally return the masked cvv
   return mask;
+}
+
+class ValidThurFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    var input = newValue.text;
+
+    if (newValue.selection.baseOffset == 0) {
+      return newValue;
+    }
+
+    var bufferString = StringBuffer();
+    // this is to buff the valid thru using / after first 2 characters
+    for (int i = 0; i < input.length; i++) {
+      bufferString.write(input[i]);
+      var nonZeroIndexValue = i + 1;
+      if (nonZeroIndexValue % 2 == 0 && nonZeroIndexValue != input.length) {
+        bufferString.write("/");
+      }
+    }
+
+    // finally return the buffed valid thru
+    var string = bufferString.toString();
+
+    return newValue.copyWith(
+      text: string,
+      selection: TextSelection.collapsed(offset: string.length),
+    );
+  }
 }

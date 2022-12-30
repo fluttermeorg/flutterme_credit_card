@@ -1,5 +1,5 @@
-import 'package:flutterme_credit_card/src/utils/constants.dart';
-import 'package:flutterme_credit_card/src/utils/validations.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card/utils/constants.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card/utils/validations.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatefulWidget {

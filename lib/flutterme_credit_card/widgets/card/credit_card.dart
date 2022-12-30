@@ -1,5 +1,5 @@
-import 'package:flutterme_credit_card/src/utils/constants.dart';
-import 'package:flutterme_credit_card/src/widgets/card/card_body.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card/utils/constants.dart';
+import 'package:flutterme_credit_card/flutterme_credit_card/widgets/card/card_body.dart';
 import 'package:flutter/material.dart';
 
 class FMCreditCard extends StatefulWidget {
@@ -36,10 +36,10 @@ class FMCreditCard extends StatefulWidget {
       fontWeight: FontWeight.bold,
     ),
     this.numberMaskType = FMMaskType.full,
-    this.validThru = "****",
+    this.validThru = "0199",
     this.validThruStyle = const TextStyle(color: Colors.white),
     this.validThruMaskType = FMMaskType.full,
-    this.cvv = "***",
+    this.cvv = "000",
     this.cvvStyle = const TextStyle(color: Colors.white),
     this.cvvMaskType = FMMaskType.full,
     this.holder = "John Doe",
