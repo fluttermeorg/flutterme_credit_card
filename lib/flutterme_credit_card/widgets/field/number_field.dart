@@ -2,21 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterme_credit_card/flutterme_credit_card/utils/validations.dart';
 
-class ValidThruField extends StatefulWidget {
-  /// ## Valid Thru Field
+class FMNumberField extends StatefulWidget {
+  /// ## Card Number Field
   ///
   /// ### **Type:** `TextFormField` customized.
-  /// This is the field that controls the Valid Thru validations
+  /// This is the field that controls the Card Number validations
   /// which are immutable. Although other properties like decorations and more
   /// can be customized to fit needs.
-  ///
-  /// **Validations**
-  /// * Takes only digits.
-  /// * Allows on a minimum of 3 characters and maximum of 4 characters.
-  /// * Can only be single line field.
-  /// * The keyboard type is always set to numbers.
-  /// * Validation are done automatically on user interaction.
-  const ValidThruField({
+  const FMNumberField({
     super.key,
     this.controller,
     this.focusNode,
@@ -271,71 +264,27 @@ class ValidThruField extends StatefulWidget {
   final MouseCursor? mouseCursor;
 
   @override
-  State<ValidThruField> createState() => _ValidThruFieldState();
+  State<FMNumberField> createState() => _FMNumberFieldState();
 }
 
-class _ValidThruFieldState extends State<ValidThruField> {
+class _FMNumberFieldState extends State<FMNumberField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       // default immutable params
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
-        LengthLimitingTextInputFormatter(5),
+        LengthLimitingTextInputFormatter(
+            19), // setting 19 as the maximum digits a card can have
+        NumberFormatter()
       ],
       maxLines: 1,
       keyboardType: TextInputType.number,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (input) {
-        if (input!.isEmpty) {
-          return "Valid Thru can't be empty";
-        } else if (input.length < 5) {
-          return "CVV must be 4 characters";
-        }
-        var bufferString = StringBuffer();
-
-        // getting current month and year
-        int currentMonth = DateTime.now().month;
-        int currentYear = int.parse("${DateTime.now().year}".substring(2, 4));
-
-        // getting the given month and year
-        int month = int.parse(input.substring(0, 2));
-        int year = int.parse(input.substring(2, 4));
-
-        // checking if month and year are valid
-        bool isMonthValid = month.isBetween(1, 12);
-        bool isYearValid = year >= currentYear;
-
-        // return [FMCardException] if month is invalid
-        if (!isMonthValid) {
-          return "Invalid month given. Month range must be between 01-12!";
-        }
-
-        // return [FMCardException] if year is invalid
-        if (!isYearValid) {
-          return "Invalid year given. Year must be in the future!";
-        }
-
-        // NOTE: this is not currently active. It's just and idea added for future
-        // updates.It's function is to handle expiring card [FMCardException]
-        if (month == currentMonth && year == currentYear) {
-          //   return "Card expiring this month!";
-        }
-
-        // this is to buff the valid thru using / after first 2 characters
-        for (int i = 0; i < input.length; i++) {
-          bufferString.write(input[i]);
-          var nonZeroIndexValue = i + 1;
-          if (nonZeroIndexValue % 2 == 0 && nonZeroIndexValue != input.length) {
-            bufferString.write("/");
-          }
-        }
-
-        // finally return the buffed valid thru
-        return bufferString.toString();
+        if (input!.isEmpty) return "Card Number can't be empty";
         return null;
       },
-
       // extra params
       controller: widget.controller,
       focusNode: widget.focusNode,

@@ -53,23 +53,33 @@ class CardBody extends StatefulWidget {
 class _CardBodyState extends State<CardBody> {
   @override
   Widget build(BuildContext context) {
+    String title = widget.title;
+    String number = widget.number;
+    String validThru = widget.validThru;
+    String cvv = widget.cvv;
+    String holder = widget.holder;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [header(), body(), footer()],
+      children: [
+        header(title, number),
+        body(number, validThru, cvv),
+        footer(holder),
+      ],
     );
   }
 
   /// ## Header
   /// ### **Type:** `Widget`
   /// The card header containing the *Card Title* and the *Card Type*
-  Widget header() {
+  Widget header(String title, String number) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           child: Text(
-            widget.title,
+            title,
             style: widget.titleStyle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -78,7 +88,7 @@ class _CardBodyState extends State<CardBody> {
         ClipRRect(
           borderRadius: BorderRadius.circular(4),
           child: Image.asset(
-            cardIcon(number: widget.number),
+            cardIcon(number: number),
             width: 60,
             fit: BoxFit.cover,
             package: "flutterme_credit_card",
@@ -91,7 +101,7 @@ class _CardBodyState extends State<CardBody> {
   /// ## Body
   /// ### **Type:** `Widget`
   /// The card body containing the *Card Number*, *Card Valid Thru* and the *Card CVV*
-  Widget body() {
+  Widget body(String number, String validThru, String cvv) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -100,7 +110,7 @@ class _CardBodyState extends State<CardBody> {
         children: [
           Text(
             maskCardNumber(
-              number: widget.number,
+              number: number.isEmpty ? "0000 0000 0000 0000" : number,
               maskType: widget.numberMaskType,
             ),
             style: widget.numberStyle,
@@ -123,7 +133,7 @@ class _CardBodyState extends State<CardBody> {
                   ),
                   Text(
                     maskValidThru(
-                      validThru: widget.validThru,
+                      validThru: validThru.isEmpty ? "****" : validThru,
                       maskType: widget.validThruMaskType,
                     ),
                     style: widget.validThruStyle,
@@ -141,7 +151,7 @@ class _CardBodyState extends State<CardBody> {
                   ),
                   Text(
                     maskCVV(
-                      cvv: widget.cvv,
+                      cvv: cvv.isEmpty ? "***" : cvv,
                       maskType: widget.cvvMaskType,
                     ),
                     style: widget.cvvStyle,
@@ -158,9 +168,9 @@ class _CardBodyState extends State<CardBody> {
   /// ## Footer
   /// ### **Type:** `Widget`
   /// The card footer containing the *Card Holder Name*
-  Widget footer() {
+  Widget footer(String holder) {
     return Text(
-      widget.holder,
+      holder.isEmpty ? "John Doe" : holder,
       style: widget.holderStyle,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
