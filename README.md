@@ -1,5 +1,5 @@
 # <b>Credit Card Flutterme</b>
-
+![flutterme credit card header image](https://raw.githubusercontent.com/ibukunoluwanap/flutterme_credit_card/main/images/flutterme_credit_card.png)
 This is a credit card customizable widget and validation package by [Flutterme](https://github.com/fluttermeorg).
 
 The credit card package has support for the majority of the credit cards available with automatic detection and validations. This detection and validation can be disabled in cases where not needed. Below are they list of supported card validations.
