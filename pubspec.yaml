@@ -1,0 +1,21 @@
+name: flutterme_credit_card
+description: This is a credit card customizable widget and validation package by Flutterme.
+version: 1.0.0
+homepage: https://github.com/fluttermeorg/flutterme_credit_card.git/
+
+environment:
+  sdk: '>=2.18.5 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - images/ # card company logo
