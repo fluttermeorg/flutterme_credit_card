@@ -1,14 +1,11 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 export 'package:flutter/services.dart' show SmartQuotesType, SmartDashesType;
 
-
 class FMHolderField extends FormField<String> {
   /// ## Holder Field
-  /// 
+  ///
   /// ### **Type:** `FMHolderField`.
   /// This field return a [TextFormField] type version for flutterme call
   /// [FMHolderField]. It behaves and same way and contains same properties.
@@ -66,88 +63,102 @@ class FMHolderField extends FormField<String> {
     super.restorationId,
     bool enableIMEPersonalizedLearning = true,
     MouseCursor? mouseCursor,
-  }) : assert(initialValue == null || controller == null),
-       assert(obscuringCharacter.length == 1),
-       assert(maxLines == null || maxLines > 0),
-       assert(minLines == null || minLines > 0),
-       assert(
-         (maxLines == null) || (minLines == null) || (maxLines >= minLines),
-         "minLines can't be greater than maxLines",
-       ),
-       assert(
-         !expands || (maxLines == null && minLines == null),
-         'minLines and maxLines must be null when expands is true.',
-       ),
-       assert(!obscureText || maxLines == 1, 'Obscured fields cannot be multiline.'),
-       assert(maxLength == null || maxLength == TextField.noMaxLength || maxLength > 0),
-       super(
-         initialValue: controller != null ? controller.text : (initialValue ?? ''),
-         enabled: enabled ?? decoration?.enabled ?? true,
-         autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
-         builder: (FormFieldState<String> field) {
-           final _FMHolderFieldState state = field as _FMHolderFieldState;
-           final InputDecoration effectiveDecoration = (decoration ?? const InputDecoration())
-               .applyDefaults(Theme.of(field.context).inputDecorationTheme);
-           void onChangedHandler(String value) {
-             field.didChange(value);
-             if (onChanged != null) {
-               onChanged(value);
-             }
-           }
-           return UnmanagedRestorationScope(
-             bucket: field.bucket,
-             child: TextField(
-               restorationId: restorationId,
-               controller: state._effectiveController,
-               focusNode: focusNode,
-               decoration: effectiveDecoration.copyWith(errorText: field.errorText),
-               keyboardType: keyboardType,
-               textInputAction: textInputAction,
-               style: style,
-               strutStyle: strutStyle,
-               textAlign: textAlign,
-               textAlignVertical: textAlignVertical,
-               textDirection: textDirection,
-               textCapitalization: textCapitalization,
-               autofocus: autofocus,
-               toolbarOptions: toolbarOptions,
-               readOnly: readOnly,
-               showCursor: showCursor,
-               obscuringCharacter: obscuringCharacter,
-               obscureText: obscureText,
-               autocorrect: autocorrect,
-               smartDashesType: smartDashesType ?? (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
-               smartQuotesType: smartQuotesType ?? (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
-               enableSuggestions: enableSuggestions,
-               maxLengthEnforcement: maxLengthEnforcement,
-               maxLines: maxLines,
-               minLines: minLines,
-               expands: expands,
-               maxLength: maxLength,
-               onChanged: onChangedHandler,
-               onTap: onTap,
-               onEditingComplete: onEditingComplete,
-               onSubmitted: onFieldSubmitted,
-               inputFormatters: inputFormatters,
-               enabled: enabled ?? decoration?.enabled ?? true,
-               cursorWidth: cursorWidth,
-               cursorHeight: cursorHeight,
-               cursorRadius: cursorRadius,
-               cursorColor: cursorColor,
-               scrollPadding: scrollPadding,
-               scrollPhysics: scrollPhysics,
-               keyboardAppearance: keyboardAppearance,
-               enableInteractiveSelection: enableInteractiveSelection ?? (!obscureText || !readOnly),
-               selectionControls: selectionControls,
-               buildCounter: buildCounter,
-               autofillHints: autofillHints,
-               scrollController: scrollController,
-               enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
-               mouseCursor: mouseCursor,
-             ),
-           );
-         },
-       );
+  })  : assert(initialValue == null || controller == null),
+        assert(obscuringCharacter.length == 1),
+        assert(maxLines == null || maxLines > 0),
+        assert(minLines == null || minLines > 0),
+        assert(
+          (maxLines == null) || (minLines == null) || (maxLines >= minLines),
+          "minLines can't be greater than maxLines",
+        ),
+        assert(
+          !expands || (maxLines == null && minLines == null),
+          'minLines and maxLines must be null when expands is true.',
+        ),
+        assert(!obscureText || maxLines == 1,
+            'Obscured fields cannot be multiline.'),
+        assert(maxLength == null ||
+            maxLength == TextField.noMaxLength ||
+            maxLength > 0),
+        super(
+          initialValue:
+              controller != null ? controller.text : (initialValue ?? ''),
+          enabled: enabled ?? decoration?.enabled ?? true,
+          autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
+          builder: (FormFieldState<String> field) {
+            final _FMHolderFieldState state = field as _FMHolderFieldState;
+            final InputDecoration effectiveDecoration = (decoration ??
+                    const InputDecoration())
+                .applyDefaults(Theme.of(field.context).inputDecorationTheme);
+            void onChangedHandler(String value) {
+              field.didChange(value);
+              if (onChanged != null) {
+                onChanged(value);
+              }
+            }
+
+            return UnmanagedRestorationScope(
+              bucket: field.bucket,
+              child: TextField(
+                restorationId: restorationId,
+                controller: state._effectiveController,
+                focusNode: focusNode,
+                decoration:
+                    effectiveDecoration.copyWith(errorText: field.errorText),
+                keyboardType: keyboardType,
+                textInputAction: textInputAction,
+                style: style,
+                strutStyle: strutStyle,
+                textAlign: textAlign,
+                textAlignVertical: textAlignVertical,
+                textDirection: textDirection,
+                textCapitalization: textCapitalization,
+                autofocus: autofocus,
+                toolbarOptions: toolbarOptions,
+                readOnly: readOnly,
+                showCursor: showCursor,
+                obscuringCharacter: obscuringCharacter,
+                obscureText: obscureText,
+                autocorrect: autocorrect,
+                smartDashesType: smartDashesType ??
+                    (obscureText
+                        ? SmartDashesType.disabled
+                        : SmartDashesType.enabled),
+                smartQuotesType: smartQuotesType ??
+                    (obscureText
+                        ? SmartQuotesType.disabled
+                        : SmartQuotesType.enabled),
+                enableSuggestions: enableSuggestions,
+                maxLengthEnforcement: maxLengthEnforcement,
+                maxLines: maxLines,
+                minLines: minLines,
+                expands: expands,
+                maxLength: maxLength,
+                onChanged: onChangedHandler,
+                onTap: onTap,
+                onEditingComplete: onEditingComplete,
+                onSubmitted: onFieldSubmitted,
+                inputFormatters: inputFormatters,
+                enabled: enabled ?? decoration?.enabled ?? true,
+                cursorWidth: cursorWidth,
+                cursorHeight: cursorHeight,
+                cursorRadius: cursorRadius,
+                cursorColor: cursorColor,
+                scrollPadding: scrollPadding,
+                scrollPhysics: scrollPhysics,
+                keyboardAppearance: keyboardAppearance,
+                enableInteractiveSelection:
+                    enableInteractiveSelection ?? (!obscureText || !readOnly),
+                selectionControls: selectionControls,
+                buildCounter: buildCounter,
+                autofillHints: autofillHints,
+                scrollController: scrollController,
+                enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
+                mouseCursor: mouseCursor,
+              ),
+            );
+          },
+        );
 
   /// Controls the text being edited.
   ///
@@ -162,7 +173,8 @@ class FMHolderField extends FormField<String> {
 class _FMHolderFieldState extends FormFieldState<String> {
   RestorableTextEditingController? _controller;
 
-  TextEditingController get _effectiveController => _fMHolderField.controller ?? _controller!.value;
+  TextEditingController get _effectiveController =>
+      _fMHolderField.controller ?? _controller!.value;
 
   FMHolderField get _fMHolderField => super.widget as FMHolderField;
 
@@ -196,7 +208,9 @@ class _FMHolderFieldState extends FormFieldState<String> {
   void initState() {
     super.initState();
     if (_fMHolderField.controller == null) {
-      _createLocalController(widget.initialValue != null ? TextEditingValue(text: widget.initialValue!) : null);
+      _createLocalController(widget.initialValue != null
+          ? TextEditingValue(text: widget.initialValue!)
+          : null);
     } else {
       _fMHolderField.controller!.addListener(_handleControllerChanged);
     }
@@ -261,4 +275,3 @@ class _FMHolderFieldState extends FormFieldState<String> {
     }
   }
 }
-

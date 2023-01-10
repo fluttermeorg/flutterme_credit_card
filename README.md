@@ -2,7 +2,7 @@
 
 This is a credit card customizable widget and validation package by [Flutterme](https://github.com/fluttermeorg).
 
-The credit card package has support for the majority of the credit cards available with automatic detection and validations. This detection and validation can be disabled in cases where not needed. Below is they list of supported card validations. To know what type of value accept.
+The credit card package has support for the majority of the credit cards available with automatic detection and validations. This detection and validation can be disabled in cases where not needed. Below are they list of supported card validations.
 
 > **Note:** Supported cards are updated and will be more in future updates.
 
@@ -33,10 +33,10 @@ The credit card package has support for the majority of the credit cards availab
 ### <b>UI Customization For FMCreditCard()</b>
 
 - #### <b>Width (width)</b>
-  This controls the width of the credit card. Note that the width can be your device width, however, know that width restriction has been set between [300]-[430].
+  This controls the width of the credit card. Note that the width can be your device width, however know that width restriction has been set between [300]-[430].
 
 - #### <b>Height (height)</b>
-  This controls the height of the credit card. Note that the height can be your device height, however, know that height restriction has been set between [200]-[250].
+  This controls the height of the credit card. Note that the height can be your device height, however know that height restriction has been set between [200]-[250].
 
 - #### <b>Padding (padding)</b>
   Creates an inner space [padding] between the credit card border and the inner widgets.
@@ -105,7 +105,7 @@ The credit card package has support for the majority of the credit cards availab
 
 ### <b>Validation Customization For FMCreditCard()</b>
 
-- #### Number Mask (FMMaskType): 
+- #### <b>Number Mask (FMMaskType)</b> 
   This allows you to choose how your card number is been masked for privacy reasons from a list of options which are:
   -  **`full`** - This display non of the characters of your card number. E.g `**** **** **** ****`
   - **`first4Last4`** - This display only the first 4 and last 4 characters of your card number. E.g `1234 **** **** 5678`
@@ -113,19 +113,19 @@ The credit card package has support for the majority of the credit cards availab
   - **`first2last6`** - This display only the first 2 and last 6 characters of your card number. E.g `12** **** **68 9876`
   - **`none`** - This display all the characters of your card number. E.g `1234 5678 9876 5633`
   
-- #### Valid Thur Mask (FMMaskType):
+- #### <b>Valid Thur Mask (FMMaskType)</b>
   This allows you to choose how your card is valid thru the date is been masked:
   -  **`full`** - This display non of the characters of your card CVV. E.g `****`
   - **`none`** - This display all the characters of your card number. E.g `1234`
   - 
-- #### CVV Mask (FMMaskType):
+- #### <b>CVV Mask (FMMaskType)</b>
   This allows you to choose how your card CVV number is been masked:
   -  **`full`** - This display non of the characters of your card CVV. E.g `***`
   - **`none`** - This display all the characters of your card number. E.g `123`
 
 
 ## <b>Usage</b>
-To use the "Flutterme's Credit Card" card, follow the sample below:
+To use the <b>"Flutterme's Credit Card"</b> `card`, follow the sample below:
 
 ```dart
 FMCreditCard(
@@ -139,7 +139,7 @@ FMCreditCard(
 )
 ```
 
-To use the "Flutterme's Credit Card" fields with form, follow the sample below:
+To use the <b>"Flutterme's Credit Card"</b> `fields` with `Form`, follow the sample below:
 
 ```dart
 Form(
@@ -202,10 +202,6 @@ Form(
 )
 ```
 
-<br/>
-<br/>
-<br/>
-
 <div align="center">
   <h2>Flutterme Dashatar Is Here 🥳!</h2>
   
@@ -217,8 +213,6 @@ Form(
   </a>
   
   Any issue(s) discovered should be reported at [issues](https://github.com/fluttermeorg/flutterme_credit_card/issues)
-  <br/>
   Any contribution(s) should be submitted at [contributions](https://github.com/fluttermeorg/flutterme_credit_card/pulls)
-  <br/>
   Checkout [flutterme for more](https://github.com/fluttermeorg)
 </div>
