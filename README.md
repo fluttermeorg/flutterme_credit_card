@@ -217,8 +217,6 @@ Form(
   </a>
   
   Any issue(s) discovered should be reported at [issues](https://github.com/fluttermeorg/flutterme_credit_card/issues)
-  <br/>
   Any contribution(s) should be submitted at [contributions](https://github.com/fluttermeorg/flutterme_credit_card/pulls)
-  <br/>
   Checkout [flutterme for more](https://github.com/fluttermeorg)
 </div>
