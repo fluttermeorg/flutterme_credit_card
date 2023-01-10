@@ -23,7 +23,9 @@ The credit card package has support for the majority of the credit cards availab
 
 
 ## <b>Sample Images</b>
-
+|     Screenshot 1     |     Screenshot 2     |
+| --- | ---------------- |
+| ![screenshot 1](https://raw.githubusercontent.com/ibukunoluwanap/flutterme_credit_card/main/images/example/shot.png)  | ![screenshot 2](https://raw.githubusercontent.com/ibukunoluwanap/flutterme_credit_card/main/images/example/shot2.png) |
 
 
 ## <b>Features</b>
